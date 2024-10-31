@@ -64,67 +64,59 @@ public class CargarGrafo {
         }
 
     }
-//    public static GrafoTDA dijkstra(GrafoTDA grafo, int origen){
-//        GrafoTDA caminoCorto = new GrafoLA();
-//        ConjuntoTDA vertices = grafo.vertices();
-//        ConjuntoTDA adyacentes;
-//        ColaPrioridadTDA adyacentesOrdenados= new ColaPrioridadLD();
-//        int origenDijkstra = origen;
-//        ConjuntoTDA nodosPorRecorrer = new ConjuntoLD();
-//
-//
-//        /*Tengo todos los vertices en un grafo sin aristas*/
-//        vertices.sacar(origen);
-//        caminoCorto.inicializarGrafo();
-//        caminoCorto.agregarVertice(origen);
-//
-//        /*Tengo todas las aristas */
-//        while(!vertices.ConjuntoVacio()){
-//            int aux;
-//            aux = vertices.elegir();
-//            caminoCorto.AgregarVertice(aux);
-//            caminoCorto.AgregarArista(origen, aux, Integer.MAX_VALUE);
-//            vertices.Sacar(aux);
-//
-//        }
-//
-//        nodosPorRecorrer = metodos.MetodosGrafo.adyacenetes(grafo, origen);
-//
-//        while(!nodosPorRecorrer.ConjuntoVacio()){
-//            int aux = nodosPorRecorrer.Elegir();
-//            nodosPorRecorrer.Sacar(aux);
-//            adyacentesOrdenados.AcolarPrioridad(aux, grafo.PesoArista(origen, aux));
-//        }
-//
-//        while(!adyacentesOrdenados.ColaVacia()){
-//
-//            adyacentes = metodos.MetodosGrafo.adyacenetes(grafo, origenDijkstra);
-//
-//            while(!adyacentes.ConjuntoVacio()){
-//                int verticeAuxiliar = adyacentes.Elegir();
-//                adyacentes.Sacar(verticeAuxiliar);
-//                int distanciaAuxiliar;
-//                if(grafo.ExisteArista(origen, origenDijkstra))
-//                    distanciaAuxiliar = grafo.PesoArista(origen, origenDijkstra);
-//                else{
-//                    distanciaAuxiliar=0;
-//                }
-//                if(distanciaAuxiliar + grafo.PesoArista(origenDijkstra, verticeAuxiliar) < caminoCorto.PesoArista(origen, verticeAuxiliar)){
-//                    caminoCorto.EliminarArista(origen, verticeAuxiliar);
-//                    caminoCorto.AgregarArista(origenDijkstra, verticeAuxiliar, grafo.PesoArista(origenDijkstra, verticeAuxiliar));
-//
-//                }
-//
-//
-//            }
-//
-//            origenDijkstra=adyacentesOrdenados.Primero();
-//            adyacentesOrdenados.Desacolar();
-//
-//        }
-//
-//        return caminoCorto;
-//    }
+
+    public static GrafoTDA dijkstra(GrafoTDA grafo, int origen) {
+        GrafoTDA caminoCorto = new GrafoLA();
+        ConjuntoTDA vertices = grafo.vertices();
+        ConjuntoTDA adyacentes;
+        ColaPrioridadTDA adyacentesOrdenados = new ColaPrioridadLD();
+        adyacentesOrdenados.inicializarCola();
+
+        ConjuntoTDA nodosPorRecorrer = new ConjuntoLD();
+        nodosPorRecorrer.inicializarConjunto();
+
+
+        vertices.sacar(origen);
+        caminoCorto.inicializarGrafo();
+        caminoCorto.agregarVertice(origen, false);
+
+
+        while (!vertices.conjuntoVacio()) {
+            int aux = vertices.elegir();
+            vertices.sacar(aux);
+            caminoCorto.agregarVertice(aux, false);
+            caminoCorto.agregarArista(origen, aux, Integer.MAX_VALUE);
+        }
+
+        nodosPorRecorrer = metodos.Ejercicios.Adyacentes(grafo, origen);
+
+        while (!nodosPorRecorrer.conjuntoVacio()) {
+            int aux = nodosPorRecorrer.elegir();
+            nodosPorRecorrer.sacar(aux);
+            adyacentesOrdenados.acolarPrioridad(aux, grafo.pesoArista(origen, aux));
+        }
+
+        while (!adyacentesOrdenados.colaVacia()) {
+            int origenDijkstra = adyacentesOrdenados.primero();
+            adyacentesOrdenados.desacolar();
+
+            adyacentes = metodos.Ejercicios.Adyacentes(grafo, origenDijkstra);
+
+            while (!adyacentes.conjuntoVacio()) {
+                int verticeAuxiliar = adyacentes.elegir();
+                adyacentes.sacar(verticeAuxiliar);
+                int distanciaAuxiliar = grafo.pesoArista(origen, origenDijkstra);
+
+                if (distanciaAuxiliar + grafo.pesoArista(origenDijkstra, verticeAuxiliar) < caminoCorto.pesoArista(origen, verticeAuxiliar)) {
+                    caminoCorto.eliminarArista(origen, verticeAuxiliar);
+                    caminoCorto.agregarArista(origen, verticeAuxiliar, distanciaAuxiliar + grafo.pesoArista(origenDijkstra, verticeAuxiliar));
+                }
+            }
+        }
+
+        return caminoCorto;
+    }
+
 
 
 }

@@ -670,6 +670,26 @@ public class Ejercicios {
 
         return c;
     }
+    public static ConjuntoTDA Adyacentes(GrafoTDA g, int v) {
+        ConjuntoTDA c = new ConjuntoLD();
+        c.inicializarConjunto();
+
+        ConjuntoTDA aux = g.vertices();
+
+
+        while (!aux.conjuntoVacio()) {
+            int x = aux.elegir();
+            aux.sacar(x);
+
+
+            if (g.existeArista(v, x)) {
+                c.agregar(x);
+            }
+        }
+
+        return c;
+    }
+
 
 
     public static int MayorCosto(GrafoTDA g,int v){
