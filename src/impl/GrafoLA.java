@@ -102,12 +102,15 @@ public class GrafoLA implements GrafoTDA {
         NodoGrafo n1 = this.vert2Nodo(v1);
 
         NodoArista aux;
-        for(aux = n1.arista; aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
+        for(aux = n1.arista; aux != null && aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
+        }
+
+        if (aux == null) {
+            return 99;
         }
 
         return aux.etiqueta;
     }
-
     class NodoArista {
         int etiqueta;
         NodoGrafo nodoDestino;
