@@ -12,4 +12,7 @@ public interface ConjuntoTDA {
     int elegir();
 
     boolean pertenece(int var1);
+
+    int cardinal();
+
 }

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.ArrayList;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public class CargarGrafo {
@@ -116,6 +117,29 @@ public class CargarGrafo {
 
         return caminoCorto;
     }
+
+    public static Integer[][] grafoAMatriz(GrafoTDA grafo) {
+        ConjuntoTDA vertices = grafo.vertices();
+        int n = vertices.cardinal();
+        Integer[][] matriz = new Integer[n][n];
+        int[] verticeArray = new int[n];
+        int index = 0;
+
+        while (!vertices.conjuntoVacio()) {
+            int vertice = vertices.elegir();
+            verticeArray[index++] = vertice;
+            vertices.sacar(vertice);
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matriz[i][j] = grafo.pesoArista(verticeArray[i], verticeArray[j]);
+            }
+        }
+
+        return matriz;
+    }
+
 
 
 

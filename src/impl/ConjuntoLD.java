@@ -68,4 +68,10 @@ public class ConjuntoLD implements ConjuntoTDA {
 
         return aux != null;
     }
+
+    @Override
+    public int cardinal() {
+        return this.cant;
+    }
+
 }
