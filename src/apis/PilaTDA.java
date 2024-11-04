@@ -10,4 +10,6 @@ public interface PilaTDA {
     boolean pilaVacia();
 
     int tope();
+
+
 }

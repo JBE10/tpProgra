@@ -13,7 +13,7 @@ public class GrafoLA implements GrafoTDA {
         this.origen = null;
     }
 
-    public void agregarVertice(int v,boolean centro) {
+    public void agregarVertice(int v, boolean centro) {
         NodoGrafo aux = new NodoGrafo();
         aux.nodo = v;
         aux.centro = centro;
@@ -32,11 +32,10 @@ public class GrafoLA implements GrafoTDA {
         n1.arista = aux;
     }
 
-    private NodoGrafo vert2Nodo(int v) {
+    public NodoGrafo vert2Nodo(int v) {
         NodoGrafo aux;
-        for(aux = this.origen; aux != null && aux.nodo != v; aux = aux.sigNodo) {
+        for (aux = this.origen; aux != null && aux.nodo != v; aux = aux.sigNodo) {
         }
-
         return aux;
     }
 
@@ -45,13 +44,12 @@ public class GrafoLA implements GrafoTDA {
             this.origen = this.origen.sigNodo;
         }
 
-        for(NodoGrafo aux = this.origen; aux != null; aux = aux.sigNodo) {
+        for (NodoGrafo aux = this.origen; aux != null; aux = aux.sigNodo) {
             this.eliminarAristaNodo(aux, v);
             if (aux.sigNodo != null && aux.sigNodo.nodo == v) {
                 aux.sigNodo = aux.sigNodo.sigNodo;
             }
         }
-
     }
 
     private void eliminarAristaNodo(NodoGrafo nodo, int v) {
@@ -60,7 +58,7 @@ public class GrafoLA implements GrafoTDA {
             if (aux.nodoDestino.nodo == v) {
                 nodo.arista = aux.sigArista;
             } else {
-                while(aux.sigArista != null && aux.sigArista.nodoDestino.nodo != v) {
+                while (aux.sigArista != null && aux.sigArista.nodoDestino.nodo != v) {
                     aux = aux.sigArista;
                 }
 
@@ -69,14 +67,13 @@ public class GrafoLA implements GrafoTDA {
                 }
             }
         }
-
     }
 
     public ConjuntoTDA vertices() {
         ConjuntoTDA c = new ConjuntoLD();
         c.inicializarConjunto();
 
-        for(NodoGrafo aux = this.origen; aux != null; aux = aux.sigNodo) {
+        for (NodoGrafo aux = this.origen; aux != null; aux = aux.sigNodo) {
             c.agregar(aux.nodo);
         }
 
@@ -92,7 +89,7 @@ public class GrafoLA implements GrafoTDA {
         NodoGrafo n1 = this.vert2Nodo(v1);
 
         NodoArista aux;
-        for(aux = n1.arista; aux != null && aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
+        for (aux = n1.arista; aux != null && aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
         }
 
         return aux != null;
@@ -102,7 +99,7 @@ public class GrafoLA implements GrafoTDA {
         NodoGrafo n1 = this.vert2Nodo(v1);
 
         NodoArista aux;
-        for(aux = n1.arista; aux != null && aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
+        for (aux = n1.arista; aux != null && aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
         }
 
         if (aux == null) {
@@ -110,23 +107,5 @@ public class GrafoLA implements GrafoTDA {
         }
 
         return aux.etiqueta;
-    }
-    class NodoArista {
-        int etiqueta;
-        NodoGrafo nodoDestino;
-        NodoArista sigArista;
-
-        NodoArista() {
-        }
-    }
-
-    class NodoGrafo {
-        int nodo;
-        boolean centro;
-        NodoArista arista;
-        NodoGrafo sigNodo;
-
-        NodoGrafo() {
-        }
     }
 }

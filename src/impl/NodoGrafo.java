@@ -1,22 +1,27 @@
-package impl;
+    package impl;
 
-public class NodoGrafo {
+    public class NodoGrafo {
 
-    int nodo;
-    boolean centro;
-    NodoArista arista;
-    NodoGrafo sigNodo;
+        int nodo;
+        boolean centro;
+        NodoArista arista;
+        NodoGrafo sigNodo;
 
-    public boolean getCentro(){
-        return this.centro;
+        public boolean getCentro(){
+            return this.centro;
+        }
+        public int getNodo(){
+            return this.nodo;
+        }
+
+
+        NodoGrafo() {
+        }
+
+        NodoGrafo(int nodo, boolean centro){
+            this.nodo = nodo;
+            this.centro = centro;
+        }
+
+
     }
-    public int getNodo(){
-        return this.nodo;
-    }
-
-
-    NodoGrafo() {
-    }
-
-
-}

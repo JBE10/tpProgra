@@ -44,10 +44,12 @@ public class TestGrafo {
         grafoPrueba.agregarArista(4,6,6);
         grafoPrueba.agregarArista(6,4,6);
 
-        GrafoTDA resultado=lectura.CargarGrafo.dijkstra(grafoPrueba,6);
-        System.out.println(resultado.pesoArista(6,3));
-        System.out.println(resultado.pesoArista(2,1));
+        GrafoTDA resultado=lectura.CargarGrafo.dijkstra(grafoPrueba,1);
 
+        System.out.println(resultado.pesoArista(1,5));
+
+        int[][] matriz=lectura.Matriz.crearMatrizDistanciasMinimas(grafoPrueba);
+        lectura.Matriz.imprimirMatriz(matriz);
 
     }
 

@@ -17,9 +17,9 @@ public class ConjuntoLD implements ConjuntoTDA {
 
     public void agregar(int x) {
         if (!this.pertenece(x)) {
-            Nodo aux = new Nodo();
-            aux.info = x;
-            aux.sig = this.c;
+            NodoGrafo aux = new NodoGrafo();
+            aux.nodo = x;
+            aux.sigNodo = this.c;
             this.c = aux;
             ++this.cant;
         }
@@ -28,16 +28,16 @@ public class ConjuntoLD implements ConjuntoTDA {
 
     public void sacar(int x) {
         if (this.c != null) {
-            if (this.c.info == x) {
-                this.c = this.c.sig;
+            if (this.c.nodo == x) {
+                this.c = this.c.sigNodo;
                 --this.cant;
             } else {
-                Nodo aux;
-                for(aux = this.c; aux.sig != null && aux.sig.info != x; aux = aux.sig) {
+                NodoGrafo aux;
+                for(aux = this.c; aux.sigNodo != null && aux.sigNodo.nodo != x; aux = aux.sigNodo) {
                 }
 
-                if (aux.sig != null) {
-                    aux.sig = aux.sig.sig;
+                if (aux.sigNodo != null) {
+                    aux.sigNodo = aux.sigNodo.sigNodo;
                     --this.cant;
                 }
             }
@@ -50,20 +50,18 @@ public class ConjuntoLD implements ConjuntoTDA {
     }
 
     public int elegir() {
-        Random rand = new Random();
-        int x = rand.nextInt(this.cant);
-        Nodo aux = this.c;
-
-        for(int i = 0; i < x; ++i) {
-            aux = aux.sig;
-        }
-
-        return aux.info;
+        return this.c.nodo;
     }
 
+    public NodoGrafo elegir1() {
+        return this.c;
+
+    }
+
+
     public boolean pertenece(int x) {
-        Nodo aux;
-        for(aux = this.c; aux != null && aux.info != x; aux = aux.sig) {
+        NodoGrafo aux;
+        for(aux = this.c; aux != null && aux.nodo != x; aux = aux.sigNodo) {
         }
 
         return aux != null;

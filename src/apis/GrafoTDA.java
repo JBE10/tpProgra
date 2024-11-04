@@ -17,4 +17,6 @@ public interface GrafoTDA {
     boolean existeArista(int var1, int var2);
 
     int pesoArista(int var1, int var2);
+
+    NodoGrafo vert2Nodo(int vertice);
 }
