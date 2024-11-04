@@ -76,21 +76,21 @@ public class CargarGrafo {
         ConjuntoTDA nodosPorRecorrer = new ConjuntoLD();
         nodosPorRecorrer.inicializarConjunto();
 
-        // Paso 1: Inicializar el grafo de caminos cortos y establecer distancias iniciales
+
         caminoCorto.inicializarGrafo();
         caminoCorto.agregarVertice(origen, false);
-        caminoCorto.agregarArista(origen, origen, 0); // Distancia del origen a sí mismo es 0
+        caminoCorto.agregarArista(origen, origen, 0);
 
         while (!vertices.conjuntoVacio()) {
             int aux = vertices.elegir();
             vertices.sacar(aux);
-            if (aux != origen) { // Evita agregar el origen a sí mismo con MAX_VALUE
+            if (aux != origen) {
                 caminoCorto.agregarVertice(aux, false);
-                caminoCorto.agregarArista(origen, aux, Integer.MAX_VALUE); // Inicializar a MAX_VALUE
+                caminoCorto.agregarArista(origen, aux, Integer.MAX_VALUE);
             }
         }
 
-        // Paso 2: Inicializar la cola de prioridad con los adyacentes del origen
+
         nodosPorRecorrer = metodos.Ejercicios.Adyacentes(grafo, origen);
         while (!nodosPorRecorrer.conjuntoVacio()) {
             int aux = nodosPorRecorrer.elegir();
@@ -98,10 +98,10 @@ public class CargarGrafo {
             int pesoArista = grafo.pesoArista(origen, aux);
             adyacentesOrdenados.acolarPrioridad(aux, pesoArista);
             caminoCorto.eliminarArista(origen, aux);
-            caminoCorto.agregarArista(origen, aux, pesoArista); // Guardar distancia inicial
+            caminoCorto.agregarArista(origen, aux, pesoArista);
         }
 
-        // Paso 3: Procesar cada nodo en la cola de prioridad
+
         while (!adyacentesOrdenados.colaVacia()) {
             int origenDijkstra = adyacentesOrdenados.primero();
             adyacentesOrdenados.desacolar();
@@ -118,12 +118,12 @@ public class CargarGrafo {
 
                 int nuevaDistancia = distanciaOrigenDijkstra + grafo.pesoArista(origenDijkstra, verticeAuxiliar);
 
-                // Si encontramos un camino más corto, lo actualizamos
+
                 if (nuevaDistancia < caminoCorto.pesoArista(origen, verticeAuxiliar)) {
                     caminoCorto.eliminarArista(origen, verticeAuxiliar);
-                    caminoCorto.agregarArista(origen, verticeAuxiliar, nuevaDistancia); // Agregar nueva distancia
+                    caminoCorto.agregarArista(origen, verticeAuxiliar, nuevaDistancia);
 
-                    // Agregar `verticeAuxiliar` con su nueva distancia a la cola de prioridad
+
                     adyacentesOrdenados.acolarPrioridad(verticeAuxiliar, nuevaDistancia);
                 }
             }

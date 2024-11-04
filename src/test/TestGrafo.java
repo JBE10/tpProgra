@@ -48,7 +48,7 @@ public class TestGrafo {
 
         System.out.println(resultado.pesoArista(1,5));
 
-        int[][] matriz=lectura.Matriz.crearMatrizDistanciasMinimas(grafoPrueba);
+        int[][] matriz=lectura.Matriz.crearMatrizDistanciasMinimas(grafo);
         lectura.Matriz.imprimirMatriz(matriz);
 
     }
