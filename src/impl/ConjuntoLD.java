@@ -5,7 +5,7 @@ import apis.ConjuntoTDA;
 import java.util.Random;
 
 public class ConjuntoLD implements ConjuntoTDA {
-    Nodo c;
+    NodoGrafo c;
     int cant;
 
     public ConjuntoLD() {

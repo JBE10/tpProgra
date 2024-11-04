@@ -1,5 +1,7 @@
 package apis;
 
+import impl.NodoGrafo;
+
 public interface GrafoTDA {
 
     void inicializarGrafo();

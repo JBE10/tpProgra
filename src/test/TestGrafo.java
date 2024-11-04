@@ -17,10 +17,10 @@ public class TestGrafo {
         GrafoTDA grafoPrueba=new GrafoLA();
         grafoPrueba.inicializarGrafo();
 
-        grafoPrueba.agregarVertice(1,false);
+        grafoPrueba.agregarVertice(1,true);
         grafoPrueba.agregarVertice(2,false);
         grafoPrueba.agregarVertice(3,false);
-        grafoPrueba.agregarVertice(4,false);
+        grafoPrueba.agregarVertice(4,true);
         grafoPrueba.agregarVertice(5,false);
         grafoPrueba.agregarVertice(6,false);
 

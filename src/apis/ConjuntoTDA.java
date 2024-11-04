@@ -1,5 +1,7 @@
 package apis;
 
+import impl.NodoGrafo;
+
 public interface ConjuntoTDA {
     void inicializarConjunto();
 
@@ -10,6 +12,7 @@ public interface ConjuntoTDA {
     boolean conjuntoVacio();
 
     int elegir();
+    NodoGrafo elegir1();
 
     boolean pertenece(int var1);
 
