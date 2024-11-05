@@ -78,7 +78,9 @@ public class CargarGrafo {
 
 
         caminoCorto.inicializarGrafo();
-        caminoCorto.agregarVertice(origen, false);
+        NodoGrafo n=grafo.vert2Nodo(origen);
+        caminoCorto.agregarVertice(origen, false,0,0,n.getVolumenProduccion());
+
         caminoCorto.agregarArista(origen, origen, 0);
 
         while (!vertices.conjuntoVacio()) {

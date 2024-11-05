@@ -6,7 +6,7 @@ public interface GrafoTDA {
 
     void inicializarGrafo();
 
-    void agregarVertice(int var1,boolean centro);
+    void agregarVertice(int var1,boolean centro,int costoUnitarioEnviarMercaderia,int costoFijoAnualCentroDeDistribucion,int volumenDeProduccion);
 
     void eliminarVertice(int var1);
 

@@ -32,9 +32,12 @@
         NodoGrafo() {
         }
 
-        NodoGrafo(int nodo, boolean centro){
+        NodoGrafo(int nodo, boolean centro,int costoUnitarioEnviarMercaderia,int costoFijoAnualCentroDeDistribucion,int volumenProduccion){
             this.nodo = nodo;
             this.centro = centro;
+            this.costoFijoAnualCentroDeDistribucion=costoFijoAnualCentroDeDistribucion;
+            this.costoUnitarioEnviarMercaderia=costoUnitarioEnviarMercaderia;
+            this.volumenProduccion=volumenProduccion;
         }
 
 

@@ -3,6 +3,7 @@ import apis.ConjuntoTDA;
 import apis.GrafoTDA;
 import impl.ConjuntoLD;
 import impl.GrafoLA;
+import impl.NodoGrafo;
 import org.junit.Test;
 
 import java.util.Arrays;
