@@ -4,6 +4,9 @@ import apis.GrafoTDA;
 import impl.ConjuntoLD;
 import impl.GrafoLA;
 import org.junit.Test;
+
+import java.util.Arrays;
+
 public class TestGrafo {
     @Test
     public void test1() {
@@ -47,7 +50,17 @@ public class TestGrafo {
 
         int[][] matriz=lectura.Matriz.crearMatrizDistanciasMinimas(grafo);
         matriz=lectura.Matriz.actualizarMatriz(matriz,grafo);
-        lectura.Matriz.imprimirMatriz(matriz);
+        int [] veector=lectura.MatrizV2.encontrarMejorCombinacion(matriz,grafo);
+        System.out.println(Arrays.toString(veector));
+
+
+
+//        for (int combinacion = 0; combinacion < 256; combinacion++) {
+//            lectura.Matriz.aplicarCombinacion(matriz, combinacion);
+//            System.out.println("Combinación: " + combinacion);
+//            lectura.Matriz.imprimirMatriz(matriz);
+//        }
+
 
     }
 

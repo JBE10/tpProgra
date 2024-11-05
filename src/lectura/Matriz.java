@@ -5,6 +5,7 @@ import apis.GrafoTDA;
 import impl.NodoGrafo;
 import impl.*;
 import apis.*;
+import java.util.*;
 
 public class Matriz {
 
@@ -110,6 +111,32 @@ public class Matriz {
 
     }
 
+
+
+    public static void aplicarCombinacion(int[][] matriz, int combinacion) {
+        for (int col = 0; col < 8; col++) {
+            // Comprueba si el bit en la posición `col` está encendido (1) o apagado (0)
+            if ((combinacion & (1 << col)) != 0) {
+                encenderColumna(matriz, col);
+            } else {
+                apagarColumna(matriz, col);
+            }
+        }
+    }
+
+    // Método para encender una columna (cambia los valores a 1)
+    public static void encenderColumna(int[][] matriz, int columna) {
+        for (int fila = 0; fila < matriz.length; fila++) {
+            matriz[fila][columna] = 1;
+        }
+    }
+
+    // Método para apagar una columna (cambia los valores a 0)
+    public static void apagarColumna(int[][] matriz, int columna) {
+        for (int fila = 0; fila < matriz.length; fila++) {
+            matriz[fila][columna] = 0;
+        }
+    }
 
 
 }
