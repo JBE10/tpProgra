@@ -13,10 +13,13 @@ public class GrafoLA implements GrafoTDA {
         this.origen = null;
     }
 
-    public void agregarVertice(int v, boolean centro) {
+    public void agregarVertice(int v, boolean centro,int costoUnitarioEnviarMecaderia,int costoFijoAnualDeDistribucion,int volumenDePro) {
         NodoGrafo aux = new NodoGrafo();
         aux.nodo = v;
         aux.centro = centro;
+        aux.volumenProduccion=volumenDePro;
+        aux.costoUnitarioEnviarMercaderia=costoUnitarioEnviarMecaderia;
+        aux.costoFijoAnualCentroDeDistribucion=costoFijoAnualDeDistribucion;
         aux.arista = null;
         aux.sigNodo = this.origen;
         this.origen = aux;

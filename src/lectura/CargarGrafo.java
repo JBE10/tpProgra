@@ -25,13 +25,13 @@ public class CargarGrafo {
                 String[] parts = data.split(",");
                 int id = Integer.parseInt(parts[0]);
 
+
                 if (id>=50){
-                    grafo.agregarVertice(id,true);
+                    grafo.agregarVertice(id,true,Integer.parseInt(parts[1]),Integer.parseInt(parts[2]),0);
                 }
                 else{
-                    grafo.agregarVertice(id,false);
+                    grafo.agregarVertice(id,false,0,0,Integer.parseInt(parts[1]));
                 }
-                System.out.println(id);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
@@ -83,9 +83,10 @@ public class CargarGrafo {
 
         while (!vertices.conjuntoVacio()) {
             int aux = vertices.elegir();
+            NodoGrafo nodoAux=grafo.vert2Nodo(aux);
             vertices.sacar(aux);
             if (aux != origen) {
-                caminoCorto.agregarVertice(aux, false);
+                caminoCorto.agregarVertice(aux, false,0,0,nodoAux.getVolumenProduccion());
                 caminoCorto.agregarArista(origen, aux, Integer.MAX_VALUE);
             }
         }
