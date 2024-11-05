@@ -18,7 +18,7 @@ public class MatrizV2 {
         int costoMinimo = Integer.MAX_VALUE;
 
         for (int[] combinacion : combinaciones) {
-            // Evitar la combinación donde todos los centros están apagados
+
             if (esCombinacionValida(combinacion)) {
                 int costoTotal = calcularCostoTotal(costos, combinacion,grafo);
                 if (costoTotal < costoMinimo) {
@@ -92,7 +92,7 @@ public class MatrizV2 {
             if (centroSeleccionado) {
                 costoTotal += costoMinimoCliente;
             } else {
-                // Si no se selecciona ningún centro, asignar un costo alto para evitar esta combinación
+
                 costoTotal += Integer.MAX_VALUE;
             }
         }
