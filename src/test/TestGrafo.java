@@ -19,6 +19,10 @@ public class TestGrafo {
 
         matrizCostos = lectura.Matriz.actualizarMatriz(matrizCostos, grafo);
 
+
+
+
+
         int[] mejorCombinacion = lectura.MatrizV2.encontrarMejorCombinacion(matrizCostos, grafo);
         System.out.println("Mejor combinación de centros activos: " + Arrays.toString(mejorCombinacion));
 
