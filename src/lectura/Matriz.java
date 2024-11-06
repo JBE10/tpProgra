@@ -5,7 +5,6 @@ import apis.GrafoTDA;
 import impl.NodoGrafo;
 import impl.*;
 import apis.*;
-import java.util.*;
 
 public class Matriz {
 
@@ -56,14 +55,6 @@ public class Matriz {
     }
 
 
-    public static void imprimirMatriz(int[][] matriz) {
-        for (int[] ints : matriz) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
-            }
-            System.out.println();
-        }
-    }
 
 
     public static int[][] actualizarMatriz(int[][] matrizInicial, GrafoTDA grafo) {
