@@ -11,6 +11,9 @@ public class TestGrafo {
         grafo.inicializarGrafo();
 
 
+
+
+
         grafo = lectura.CargarGrafo.cargarUsuarios();
         lectura.CargarGrafo.cargarAristas(grafo);
 
