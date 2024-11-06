@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 public class MatrizV2 {
     public static int[] encontrarMejorCombinacion(int[][] costos, GrafoTDA grafo) {
-        int n = costos[0].length; // Número de centros
+        int n = costos[0].length;
         List<int[]> combinaciones = new ArrayList<>();
         generarCombinaciones(new int[n], 0, combinaciones);
 
@@ -107,5 +107,58 @@ public class MatrizV2 {
         }
         return false;
     }
+
+    public static int[] asignarClientesACentrosActivos(int[][] costos, int[] combinacion, GrafoTDA grafo) {
+
+        int cantClientes = 0;
+        ConjuntoTDA verticesAux = grafo.vertices();
+        while (!verticesAux.conjuntoVacio()) {
+            int vertice = verticesAux.elegir();
+            verticesAux.sacar(vertice);
+            NodoGrafo nodo = grafo.vert2Nodo(vertice);
+            if (!nodo.getCentro()) {
+                cantClientes++;
+            }
+        }
+
+        int[] asignaciones = new int[cantClientes];
+
+
+        ConjuntoTDA vertices = grafo.vertices();
+        ColaTDA clientes = new ColaLD();
+        clientes.inicializarCola();
+
+        while (!vertices.conjuntoVacio()) {
+            int vertice = vertices.elegir();
+            vertices.sacar(vertice);
+            NodoGrafo nodo = grafo.vert2Nodo(vertice);
+            if (!nodo.getCentro()) {
+                clientes.acolar(vertice);
+            }
+        }
+
+
+        int clienteIndex = 0;
+        while (!clientes.colaVacia()) {
+            int cliente = clientes.primero();
+            clientes.desacolar();
+
+            int costoMinimo = Integer.MAX_VALUE;
+            int centroAsignado = -1;
+
+            for (int centro = 0; centro < combinacion.length; centro++) {
+                if (combinacion[centro] == 1 && costos[cliente][centro] < costoMinimo) {
+                    costoMinimo = costos[cliente][centro];
+                    centroAsignado = centro;
+                }
+            }
+
+
+            asignaciones[clienteIndex++] = centroAsignado;
+        }
+
+        return asignaciones;
+    }
+
 
 }
