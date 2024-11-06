@@ -1,9 +1,7 @@
 package impl;
 import apis.ConjuntoSTDA;
 import apis.ConjuntoTDA;
-import apis.DiccionarioMultipleTDA;
 import apis.DiccionarioSTDA;
-import impl.ConjuntoLD;
 
 public class DicMultipleS  implements DiccionarioSTDA {
     private class NodoClave {

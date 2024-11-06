@@ -1,6 +1,5 @@
 package impl;
 import apis.*;
-import impl.ConjuntoLD;
 
 public class DicMultipleSV  implements DiccionarioSVTDA {
     class NodoClave {
@@ -58,7 +57,6 @@ public class DicMultipleSV  implements DiccionarioSVTDA {
                     this.origen = this.origen.sigClave;
                 }
             } else {
-                DicMultipleSV.NodoClave aux;
                 for(aux = this.origen; aux.sigClave != null && aux.sigClave.clave != clave; aux = aux.sigClave) {
                 }
 
@@ -77,7 +75,6 @@ public class DicMultipleSV  implements DiccionarioSVTDA {
             if (nodo.valores.valor == valor) {
                 nodo.valores = nodo.valores.sigValor;
             } else {
-                DicMultipleSV.NodoValor aux;
                 for(aux = nodo.valores; aux.sigValor != null && aux.sigValor.valor != valor; aux = aux.sigValor) {
                 }
 

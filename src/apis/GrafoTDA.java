@@ -4,7 +4,6 @@ public interface GrafoTDA {
 
     void inicializarGrafo();
 
-    void agregarVertice(int var1);
 
     void eliminarVertice(int var1);
 

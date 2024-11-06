@@ -5,7 +5,6 @@ import apis.ConjuntoTDA;
 import java.util.Random;
 
 public class ConjuntoLD implements ConjuntoTDA {
-    Nodo c;
     int cant;
 
     public ConjuntoLD() {
@@ -17,9 +16,6 @@ public class ConjuntoLD implements ConjuntoTDA {
 
     public void agregar(int x) {
         if (!this.pertenece(x)) {
-            Nodo aux = new Nodo();
-            aux.info = x;
-            aux.sig = this.c;
             this.c = aux;
             ++this.cant;
         }
@@ -28,16 +24,10 @@ public class ConjuntoLD implements ConjuntoTDA {
 
     public void sacar(int x) {
         if (this.c != null) {
-            if (this.c.info == x) {
-                this.c = this.c.sig;
                 --this.cant;
             } else {
-                Nodo aux;
-                for(aux = this.c; aux.sig != null && aux.sig.info != x; aux = aux.sig) {
                 }
 
-                if (aux.sig != null) {
-                    aux.sig = aux.sig.sig;
                     --this.cant;
                 }
             }
@@ -50,20 +40,11 @@ public class ConjuntoLD implements ConjuntoTDA {
     }
 
     public int elegir() {
-        Random rand = new Random();
-        int x = rand.nextInt(this.cant);
-        Nodo aux = this.c;
 
-        for(int i = 0; i < x; ++i) {
-            aux = aux.sig;
         }
 
-        return aux.info;
-    }
 
     public boolean pertenece(int x) {
-        Nodo aux;
-        for(aux = this.c; aux != null && aux.info != x; aux = aux.sig) {
         }
 
         return aux != null;

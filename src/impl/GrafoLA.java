@@ -13,7 +13,6 @@ public class GrafoLA implements GrafoTDA {
         this.origen = null;
     }
 
-    public void agregarVertice(int v) {
         NodoGrafo aux = new NodoGrafo();
         aux.nodo = v;
         aux.arista = null;
@@ -31,11 +30,9 @@ public class GrafoLA implements GrafoTDA {
         n1.arista = aux;
     }
 
-    private NodoGrafo vert2Nodo(int v) {
         NodoGrafo aux;
         for(aux = this.origen; aux != null && aux.nodo != v; aux = aux.sigNodo) {
         }
-
         return aux;
     }
 
@@ -50,7 +47,6 @@ public class GrafoLA implements GrafoTDA {
                 aux.sigNodo = aux.sigNodo.sigNodo;
             }
         }
-
     }
 
     private void eliminarAristaNodo(NodoGrafo nodo, int v) {
@@ -68,7 +64,6 @@ public class GrafoLA implements GrafoTDA {
                 }
             }
         }
-
     }
 
     public ConjuntoTDA vertices() {
@@ -101,27 +96,8 @@ public class GrafoLA implements GrafoTDA {
         NodoGrafo n1 = this.vert2Nodo(v1);
 
         NodoArista aux;
-        for(aux = n1.arista; aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
         }
 
         return aux.etiqueta;
-    }
-
-    class NodoArista {
-        int etiqueta;
-        NodoGrafo nodoDestino;
-        NodoArista sigArista;
-
-        NodoArista() {
-        }
-    }
-
-    class NodoGrafo {
-        int nodo;
-        NodoArista arista;
-        NodoGrafo sigNodo;
-
-        NodoGrafo() {
-        }
     }
 }
