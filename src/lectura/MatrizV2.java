@@ -16,9 +16,9 @@ public class MatrizV2 {
 
         int[] mejorCombinacion = null;
         int costoMinimo = Integer.MAX_VALUE;
-
+        int combi=0;
         for (int[] combinacion : combinaciones) {
-
+            combi++;
             if (esCombinacionValida(combinacion)) {
                 int costoTotal = calcularCostoTotal(costos, combinacion,grafo);
                 if (costoTotal < costoMinimo) {
