@@ -9,14 +9,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 public class MatrizV2 {
+
     public static int[] encontrarMejorCombinacion(int[][] costos, GrafoTDA grafo) {
         int n = costos[0].length;
         List<int[]> combinaciones = new ArrayList<>();
         generarCombinaciones(new int[n], 0, combinaciones);
 
+
+
         int[] mejorCombinacion = null;
         int costoMinimo = Integer.MAX_VALUE;
-
+        /*
+        * Hay que podar la combinacion (0,0,0,0,0,0,0
+        * */
         for (int[] combinacion : combinaciones) {
 
             if (esCombinacionValida(combinacion)) {
@@ -51,10 +56,14 @@ public class MatrizV2 {
         ConjuntoTDA vertices = grafo.vertices();
         ColaTDA centros = new ColaLD();
         ColaTDA clientes = new ColaLD();
+
         int numCentros = 0;
         int numClientes = 0;
+
         centros.inicializarCola();
         clientes.inicializarCola();
+
+        /*Armo Cola de centros y clientes*/
 
         while (!vertices.conjuntoVacio()) {
             int vertice = vertices.elegir();
@@ -69,6 +78,8 @@ public class MatrizV2 {
             }
         }
         int i=0;
+
+        /*Calculo costos fijos segun combinacion de centros usada*/
         while(!centros.colaVacia()){
             NodoGrafo n=grafo.vert2Nodo(centros.primero());
             centros.desacolar();
@@ -84,6 +95,7 @@ public class MatrizV2 {
             int costoMinimoCliente = Integer.MAX_VALUE;
             boolean centroSeleccionado = false;
             for (int j = 0; j < combinacion.length; j++) {
+                /*Calculo el costo minimo del centro J que esta activo en la combinacion al cliente*/
                 if (combinacion[j] == 1) {
                     centroSeleccionado = true;
                     costoMinimoCliente = Math.min(costoMinimoCliente, costo[j]);

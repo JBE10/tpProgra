@@ -1,7 +1,7 @@
 package lectura;
 import apis.*;
 import impl.*;
-import org.junit.Test;
+
 
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
@@ -15,7 +15,7 @@ public class CargarGrafo {
         GrafoTDA grafo= new GrafoLA() ;
         grafo.inicializarGrafo();
         try {
-            File nodo = new File("/Users/bautiespino/Documents/Paradigma Orienado a Objetos/Progra III TP/tpProograIII/src/lectura/clientesYCentros.txt");
+            File nodo = new File("C:\\Users\\luber\\IdeaProjects\\tpProgra\\src\\lectura\\clientesYCentros.txt");
             Scanner myReader = new Scanner(nodo);
 
 
@@ -43,7 +43,7 @@ public class CargarGrafo {
     public static void cargarAristas(GrafoTDA grafo){
 
         try {
-            File nodo = new File("/Users/bautiespino/Documents/Paradigma Orienado a Objetos/Progra III TP/tpProograIII/src/lectura/rutas.txt");
+            File nodo = new File("C:\\Users\\luber\\IdeaProjects\\tpProgra\\src\\lectura\\rutas.txt");
             Scanner myReader = new Scanner(nodo);
 
 

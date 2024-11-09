@@ -12,8 +12,10 @@ public class Matriz {
         ConjuntoTDA vertices = grafo.vertices();
         ColaTDA centros = new ColaLD();
         ColaTDA clientes = new ColaLD();
+
         int numCentros = 0;
         int numClientes = 0;
+
         centros.inicializarCola();
         clientes.inicializarCola();
 
@@ -21,11 +23,12 @@ public class Matriz {
             int vertice = vertices.elegir();
             vertices.sacar(vertice);
             NodoGrafo nodo = grafo.vert2Nodo(vertice);
+
             if (nodo.getCentro()) {
-                numCentros += 1;
+                numCentros ++;
                 centros.acolar(vertice);
             } else {
-                numClientes += 1;
+                numClientes ++;
                 clientes.acolar(vertice);
             }
         }

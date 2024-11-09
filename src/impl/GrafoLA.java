@@ -37,9 +37,13 @@ public class GrafoLA implements GrafoTDA {
 
     public NodoGrafo vert2Nodo(int v) {
         NodoGrafo aux;
-        for (aux = this.origen; aux != null && aux.nodo != v; aux = aux.sigNodo) {
-        }
+        aux = origen;
+
+        while(aux.nodo != v && aux != null)
+            aux = aux.sigNodo;
+
         return aux;
+
     }
 
     public void eliminarVertice(int v) {
@@ -99,16 +103,12 @@ public class GrafoLA implements GrafoTDA {
     }
 
     public int pesoArista(int v1, int v2) {
-        NodoGrafo n1 = this.vert2Nodo(v1);
+        NodoGrafo aux = vert2Nodo(v1);
+        NodoArista arista = aux.arista;
 
-        NodoArista aux;
-        for (aux = n1.arista; aux != null && aux.nodoDestino.nodo != v2; aux = aux.sigArista) {
-        }
+        while(arista.nodoDestino.nodo != v2)
+            arista = arista.sigArista;
 
-        if (aux == null) {
-            return 99;
-        }
-
-        return aux.etiqueta;
+        return arista.etiqueta;
     }
 }

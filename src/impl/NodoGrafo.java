@@ -9,7 +9,9 @@
         int costoUnitarioEnviarMercaderia;
         int costoFijoAnualCentroDeDistribucion;
         int volumenProduccion;
-
+        /*
+        * Cambiar por esCentro
+        * */
         public boolean getCentro(){
             return this.centro;
         }

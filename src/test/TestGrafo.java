@@ -7,23 +7,32 @@ import java.util.Arrays;
 
 public class TestGrafo {
     public static void main(String[] args) {
+        /*Utilizo un grafo para cargar todos los datos*/
         GrafoTDA grafo = new GrafoLA();
         grafo.inicializarGrafo();
 
-
-
-
-
+        /*Cargamos los nodos:
+         * Centros
+         * Clientes
+         * en el grafo que creamos*/
         grafo = lectura.CargarGrafo.cargarUsuarios();
+
+        /* Cargamos las aristas:
+         * en el grafo que creamos*/
+
         lectura.CargarGrafo.cargarAristas(grafo);
 
+
+        /*
+        * Creamos una matriz matrizCost(CantCentros x CantClientes)
+        * En donde en cada celda se encuentra el costo asociado cliente->centro
+        * Siendo el costoClienteCentro = Costo envio al centro + Costo envio puerto
+        *
+        * */
 
         int[][] matrizCostos = lectura.Matriz.crearMatrizDistanciasMinimas(grafo);
 
         matrizCostos = lectura.Matriz.actualizarMatriz(matrizCostos, grafo);
-
-
-
 
 
         int[] mejorCombinacion = lectura.MatrizV2.encontrarMejorCombinacion(matrizCostos, grafo);
