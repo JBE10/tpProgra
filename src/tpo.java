@@ -4,7 +4,7 @@ import core.costos;
 
 import java.util.Arrays;
 
-public class main {
+public class tpo {
     public static void main(String[] args) {
 
         boolean poda = false;
