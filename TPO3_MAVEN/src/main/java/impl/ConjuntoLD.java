@@ -2,8 +2,6 @@ package impl;
 
 import apis.ConjuntoTDA;
 
-import java.util.Random;
-
 public class ConjuntoLD implements ConjuntoTDA {
     NodoGrafo c;
     int cant;

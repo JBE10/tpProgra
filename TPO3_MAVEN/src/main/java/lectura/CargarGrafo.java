@@ -1,21 +1,27 @@
 package lectura;
 import apis.*;
 import impl.*;
+import io.github.cdimascio.dotenv.Dotenv;
 
 
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.ArrayList;
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public class CargarGrafo {
 
 
     public static GrafoTDA cargarUsuarios(){
+
+        Dotenv dotenv = Dotenv.load();
+        String rutaClientes = dotenv.get("RUTA_CLIENTES");
+        String rutaRutas = dotenv.get("RUTA_RUTAS");
+
+
         GrafoTDA grafo= new GrafoLA() ;
         grafo.inicializarGrafo();
         try {
-            File nodo = new File("C:\\Users\\luber\\Documents\\uade\\aypIII\\TPO3_FINAL\\src\\lectura\\clientesYCentros.txt");
+            File nodo = new File(rutaClientes);
             Scanner myReader = new Scanner(nodo);
 
 
@@ -41,9 +47,10 @@ public class CargarGrafo {
         return grafo;
     }
     public static void cargarAristas(GrafoTDA grafo){
-
+        Dotenv dotenv = Dotenv.load();
+        String rutaRutas = dotenv.get("RUTA_RUTAS");
         try {
-            File nodo = new File("C:\\Users\\luber\\Documents\\uade\\aypIII\\TPO3_FINAL\\src\\lectura\\rutas.txt");
+            File nodo = new File(rutaRutas);
             Scanner myReader = new Scanner(nodo);
 
 
