@@ -1,0 +1,55 @@
+Costo mínimo: 13380
+Operaciones: 51200
+Poda: 28622
+Mejor combinación de centros activos: [0, 1, 1, 0, 0, 0, 0, 1]
+Asignación de clientes a centros:
+Cliente 0 -> Centro 7
+Cliente 1 -> Centro 1
+Cliente 2 -> Centro 1
+Cliente 3 -> Centro 1
+Cliente 4 -> Centro 1
+Cliente 5 -> Centro 1
+Cliente 6 -> Centro 1
+Cliente 7 -> Centro 1
+Cliente 8 -> Centro 1
+Cliente 9 -> Centro 1
+Cliente 10 -> Centro 1
+Cliente 11 -> Centro 2
+Cliente 12 -> Centro 2
+Cliente 13 -> Centro 2
+Cliente 14 -> Centro 2
+Cliente 15 -> Centro 2
+Cliente 16 -> Centro 2
+Cliente 17 -> Centro 2
+Cliente 18 -> Centro 2
+Cliente 19 -> Centro 7
+Cliente 20 -> Centro 2
+Cliente 21 -> Centro 7
+Cliente 22 -> Centro 7
+Cliente 23 -> Centro 7
+Cliente 24 -> Centro 7
+Cliente 25 -> Centro 7
+Cliente 26 -> Centro 7
+Cliente 27 -> Centro 7
+Cliente 28 -> Centro 1
+Cliente 29 -> Centro 2
+Cliente 30 -> Centro 2
+Cliente 31 -> Centro 2
+Cliente 32 -> Centro 2
+Cliente 33 -> Centro 2
+Cliente 34 -> Centro 2
+Cliente 35 -> Centro 2
+Cliente 36 -> Centro 2
+Cliente 37 -> Centro 2
+Cliente 38 -> Centro 2
+Cliente 39 -> Centro 2
+Cliente 40 -> Centro 2
+Cliente 41 -> Centro 2
+Cliente 42 -> Centro 2
+Cliente 43 -> Centro 2
+Cliente 44 -> Centro 2
+Cliente 45 -> Centro 2
+Cliente 46 -> Centro 2
+Cliente 47 -> Centro 7
+Cliente 48 -> Centro 7
+Cliente 49 -> Centro 7

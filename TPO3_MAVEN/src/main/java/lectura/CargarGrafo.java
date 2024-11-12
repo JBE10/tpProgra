@@ -25,6 +25,7 @@ public class CargarGrafo {
             Scanner myReader = new Scanner(nodo);
 
 
+
             while (myReader.hasNextLine()) {
 
                 String data = myReader.nextLine();

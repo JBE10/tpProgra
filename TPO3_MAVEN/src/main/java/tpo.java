@@ -8,9 +8,6 @@ import java.util.Arrays;
 public class tpo {
     public static void main(String[] args) {
 
-
-
-
         boolean poda = false;
         if(args.length == 1)
             poda = args[0].equals("poda");
