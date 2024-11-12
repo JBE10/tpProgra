@@ -39,7 +39,7 @@ public class Matriz {
             GrafoTDA grafoDijkstra = lectura.CargarGrafo.dijkstra(grafo, numero);
             ColaTDA aux = new ColaLD();
             aux.inicializarCola();
-            metodos.Ejercicios.Copiar(clientes, aux);
+            metodos.metodosCola.Copiar(clientes, aux);
 
             int j = 0;
             while (!aux.colaVacia()) {
@@ -85,7 +85,7 @@ public class Matriz {
             NodoGrafo cliente=grafo.vert2Nodo(clientes.primero());
             clientes.desacolar();
             ColaTDA centrosAux=new ColaLD();
-            metodos.Ejercicios.Copiar(centros,centrosAux);
+            metodos.metodosCola.Copiar(centros,centrosAux);
             int j=0;
             while(!centrosAux.colaVacia()){
                 NodoGrafo centro=grafo.vert2Nodo(centrosAux.primero());

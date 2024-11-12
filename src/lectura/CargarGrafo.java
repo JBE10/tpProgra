@@ -1,7 +1,7 @@
 package lectura;
 import apis.*;
 import impl.*;
-import org.junit.Test;
+
 
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
@@ -15,7 +15,7 @@ public class CargarGrafo {
         GrafoTDA grafo= new GrafoLA() ;
         grafo.inicializarGrafo();
         try {
-            File nodo = new File("/Users/bautiespino/Documents/Paradigma Orienado a Objetos/Progra III TP/tpProograIII/src/lectura/clientesYCentros.txt");
+            File nodo = new File("C:\\Users\\luber\\Documents\\uade\\aypIII\\TPO3_FINAL\\src\\lectura\\clientesYCentros.txt");
             Scanner myReader = new Scanner(nodo);
 
 
@@ -43,7 +43,7 @@ public class CargarGrafo {
     public static void cargarAristas(GrafoTDA grafo){
 
         try {
-            File nodo = new File("/Users/bautiespino/Documents/Paradigma Orienado a Objetos/Progra III TP/tpProograIII/src/lectura/rutas.txt");
+            File nodo = new File("C:\\Users\\luber\\Documents\\uade\\aypIII\\TPO3_FINAL\\src\\lectura\\rutas.txt");
             Scanner myReader = new Scanner(nodo);
 
 
@@ -94,7 +94,7 @@ public class CargarGrafo {
         }
 
 
-        nodosPorRecorrer = metodos.Ejercicios.Adyacentes(grafo, origen);
+        nodosPorRecorrer = metodos.metodosGrafos.Adyacentes(grafo, origen);
         while (!nodosPorRecorrer.conjuntoVacio()) {
             int aux = nodosPorRecorrer.elegir();
             nodosPorRecorrer.sacar(aux);
@@ -113,7 +113,7 @@ public class CargarGrafo {
             int distanciaOrigenDijkstra = caminoCorto.pesoArista(origen, origenDijkstra);
 
 
-            adyacentes = metodos.Ejercicios.Adyacentes(grafo, origenDijkstra);
+            adyacentes = metodos.metodosGrafos.Adyacentes(grafo, origenDijkstra);
             while (!adyacentes.conjuntoVacio()) {
                 int verticeAuxiliar = adyacentes.elegir();
                 adyacentes.sacar(verticeAuxiliar);

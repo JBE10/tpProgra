@@ -1,4 +1,4 @@
-package lectura;
+package core;
 import apis.ColaTDA;
 import apis.ConjuntoTDA;
 import apis.GrafoTDA;
@@ -8,19 +8,22 @@ import impl.NodoGrafo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-public class MatrizV2 {
-    public static int[] encontrarMejorCombinacion(int[][] costos, GrafoTDA grafo) {
+public class costos {
+    public static int[] encontrarMejorCombinacion(int[][] costos, GrafoTDA grafo, boolean poda) {
         int n = costos[0].length;
         List<int[]> combinaciones = new ArrayList<>();
         generarCombinaciones(new int[n], 0, combinaciones);
+        int acumuladorPoda[] = new int[1];
+        int acumuladorOperaciones = 0;
 
         int[] mejorCombinacion = null;
         int costoMinimo = Integer.MAX_VALUE;
         int combi=0;
         for (int[] combinacion : combinaciones) {
             combi++;
+            acumuladorOperaciones += Arrays.stream(combinacion).sum()*50;
             if (esCombinacionValida(combinacion)) {
-                int costoTotal = calcularCostoTotal(costos, combinacion,grafo);
+                int costoTotal = calcularCostoTotal(costos, combinacion,grafo, costoMinimo, poda, acumuladorPoda);
                 if (costoTotal < costoMinimo) {
                     costoMinimo = costoTotal;
                     mejorCombinacion = combinacion.clone();
@@ -29,6 +32,9 @@ public class MatrizV2 {
         }
 
         System.out.println("Costo mínimo: " + costoMinimo);
+        System.out.println("Operaciones: " + acumuladorOperaciones);
+        System.out.println("Poda: " + acumuladorPoda[0]);
+
         return mejorCombinacion;
     }
 
@@ -45,8 +51,9 @@ public class MatrizV2 {
         generarCombinaciones(vector, index + 1, combinaciones);
     }
 
-    public static int calcularCostoTotal(int[][] costos, int[] combinacion,GrafoTDA grafo) {
+    public static int calcularCostoTotal(int[][] costos, int[] combinacion,GrafoTDA grafo, int costoMinimo, boolean poda, int [] acumuladorPoda) {
         int costoTotal = 0;
+        int m=0; /*Contador de operaciones*/
 
         ConjuntoTDA vertices = grafo.vertices();
         ColaTDA centros = new ColaLD();
@@ -56,6 +63,7 @@ public class MatrizV2 {
         centros.inicializarCola();
         clientes.inicializarCola();
 
+        /*Armamos Cola de centros y clientes*/
         while (!vertices.conjuntoVacio()) {
             int vertice = vertices.elegir();
             vertices.sacar(vertice);
@@ -69,6 +77,8 @@ public class MatrizV2 {
             }
         }
         int i=0;
+
+        /*Calculo costos fijos segun combinacion de centros usada*/
         while(!centros.colaVacia()){
             NodoGrafo n=grafo.vert2Nodo(centros.primero());
             centros.desacolar();
@@ -77,6 +87,11 @@ public class MatrizV2 {
 
             }
             i++;
+            /*Elimino caso de que costo fijo es mayor que el minimo*/
+            if(poda && costoTotal > costoMinimo) {
+                acumuladorPoda[0]+=Arrays.stream(combinacion).sum()*50;
+                return Integer.MAX_VALUE;
+            }
         }
 
 
@@ -84,14 +99,22 @@ public class MatrizV2 {
             int costoMinimoCliente = Integer.MAX_VALUE;
             boolean centroSeleccionado = false;
             for (int j = 0; j < combinacion.length; j++) {
+
+                /*Calculo el costo minimo del centro J que esta activo en la combinacion al cliente*/
                 if (combinacion[j] == 1) {
+                    m++;
                     centroSeleccionado = true;
                     costoMinimoCliente = Math.min(costoMinimoCliente, costo[j]);
                 }
             }
             if (centroSeleccionado) {
                 costoTotal += costoMinimoCliente;
-            } else {
+                if(poda && costoTotal > costoMinimo) {
+                    acumuladorPoda[0]+=(Arrays.stream(combinacion).sum()*50)-m;
+                    return Integer.MAX_VALUE;
+
+                }
+                } else {
 
                 costoTotal += Integer.MAX_VALUE;
             }
