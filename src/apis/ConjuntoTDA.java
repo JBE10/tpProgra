@@ -1,6 +1,6 @@
 package apis;
 
-import main.java.impl.NodoGrafo;
+import impl.NodoGrafo;
 
 public interface ConjuntoTDA {
     void inicializarConjunto();

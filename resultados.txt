@@ -1,5 +1,4 @@
 Costo mínimo: 13380
-Operaciones: 51200
 Poda: 28622
 Mejor combinación de centros activos: [0, 1, 1, 0, 0, 0, 0, 1]
 Asignación de clientes a centros:

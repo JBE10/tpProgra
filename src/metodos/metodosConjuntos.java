@@ -1,4 +1,4 @@
-package main.java.metodos;
+package metodos;
 
 import apis.ConjuntoTDA;
 import impl.ConjuntoLD;

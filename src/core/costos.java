@@ -2,8 +2,8 @@ package core;
 import apis.ColaTDA;
 import apis.ConjuntoTDA;
 import apis.GrafoTDA;
-import main.java.impl.ColaLD;
-import main.java.impl.NodoGrafo;
+import impl.ColaLD;
+import impl.NodoGrafo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

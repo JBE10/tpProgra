@@ -1,4 +1,4 @@
-package main.java.lectura;
+package lectura;
 import apis.*;
 import impl.*;
 import io.github.cdimascio.dotenv.Dotenv;
